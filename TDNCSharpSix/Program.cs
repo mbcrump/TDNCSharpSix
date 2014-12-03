@@ -12,7 +12,6 @@ namespace TDNCSharpSix
         static void Main(string[] args)
         {
             //Sample One
-            //No more System.Console since I referenced it using the "using" statement.
             WriteLine("Hello TDN!");
         }
     }
