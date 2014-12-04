@@ -11,28 +11,32 @@ namespace TDNCSharpSix
     {
         static void Main(string[] args)
         {
-            //Sample One
+            //Sample One - Static Using Syntax
             WriteLine("Hello TDN!");
+            //Sample Two - Auto-Property Initializers
             Customer customer = new Customer();
             WriteLine(customer.customerID);
+            //Sample Three - Dictionary Initializers
             string combindedString = string.Join(",", customer.customerNames.ToArray());
             WriteLine(combindedString);
+            //Sample Four - 
             ReadLine();
         }
     }
 
     public class Customer
     {
-        //Sample 2
+        //Sample 2 - OLD WAY - Auto-Property Initializers
         //public Customer()
         //{
         //    customerID = Guid.NewGuid();
         //}
 
         //public Guid customerID { get; protected set; }
-        public Guid customerID { get; } = Guid.NewGuid();
 
-        //Sample 3
+        public Guid customerID { get; set; } = Guid.NewGuid();
+
+        //Sample 3 - OLD WAY - Dictionary Initializers
         //public Dictionary<string, string> customerNames = new Dictionary<string, string>()
         //    {
         //        { "Michael Jordon", "Basketball" },
