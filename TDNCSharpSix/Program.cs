@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Console;
+using System.Net;
 
 namespace TDNCSharpSix
 {
@@ -19,8 +20,42 @@ namespace TDNCSharpSix
             //Sample Three - Dictionary Initializers
             string combindedString = string.Join(",", customer.customerNames.ToArray());
             WriteLine(combindedString);
-            //Sample Four - 
+            //Sample Four - Error Handling
+
+            try
+            {
+                throw new Exception("Error");
+            }
+            catch (Exception ex) if (ex.Message == "ReallyBadError")
+            {
+                // this one will not execute.
+            }
+            catch (Exception ex) if (ex.Message == "Error")
+            {
+                // this one will execute
+                WriteLine("This one will execute");
+            }
+
+
             ReadLine();
+        }
+
+        public async Task DownloadAsync()
+        {
+            try
+            {
+                throw new Exception("Error");
+            }
+            catch
+            {
+                await Task.Delay(2000);
+                WriteLine("Waiting 2 seconds");
+            }
+            finally
+            {
+                await Task.Delay(2000);
+                WriteLine("Waiting 2 seconds");
+            }
         }
     }
 
@@ -52,6 +87,7 @@ namespace TDNCSharpSix
             ["Babe Ruth"] = "Baseball"
         };
 
+         
     }
 
     }
