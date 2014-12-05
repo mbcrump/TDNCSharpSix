@@ -36,11 +36,15 @@ namespace TDNCSharpSix
                 WriteLine("This one will execute");
             }
 
+            //Sample 5 - async/await
+            Task task = new Task(DownloadAsync);
+            task.Start();
+            task.Wait();
 
             ReadLine();
         }
 
-        public async Task DownloadAsync()
+        public static async void DownloadAsync()
         {
             try
             {
@@ -55,6 +59,7 @@ namespace TDNCSharpSix
             {
                 await Task.Delay(2000);
                 WriteLine("Waiting 2 seconds");
+                 
             }
         }
     }
