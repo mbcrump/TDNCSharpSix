@@ -14,14 +14,16 @@ namespace TDNCSharpSix
         {
             //Sample One - Static Using Syntax
             WriteLine("Hello TDN!");
+
             //Sample Two - Auto-Property Initializers
             Customer customer = new Customer();
             WriteLine(customer.customerID);
+
             //Sample Three - Dictionary Initializers
             string combindedString = string.Join(",", customer.customerNames.ToArray());
             WriteLine(combindedString);
-            //Sample Four - Error Handling
 
+            //Sample Four - Error Handling
             try
             {
                 throw new Exception("Error");
@@ -36,12 +38,35 @@ namespace TDNCSharpSix
                 WriteLine("This one will execute");
             }
 
-            //Sample 5 - async/await
+            //Sample 5 - async/await in error handling
             Task task = new Task(DownloadAsync);
             task.Start();
             task.Wait();
 
+            //Sample 6 - nameOf Expressions - Uncomment the line below and examine the debugger window.
+            //DoSomething("Blow Up!");
+
+            //Sample 7 - String 
+            string firstName = "Michael";
+            string lastName = "Crump";
+            int orderNumber = 250000;
+
+            WriteLine("Name : " + firstName + " " + lastName);
+            WriteLine(string.Format("Name : {0} {1}", firstName, lastName));
+
+            WriteLine("Name : \{firstName} \{lastName}");
+            WriteLine("Name : \{firstName} \{lastName}\nDiscount :\{orderNumber == 250000 ? " You Get 25% Off your order!" : " "}");
+
+            //prevent window closing 
             ReadLine();
+        }
+
+        public static void DoSomething(string name)
+        {
+            //OLD WAY
+            //if (name != null) throw new Exception("name");
+            //NEW WAY IN C# 6.0
+            if (name != null) throw new Exception(nameof(name));
         }
 
         public static async void DownloadAsync()
@@ -92,7 +117,12 @@ namespace TDNCSharpSix
             ["Babe Ruth"] = "Baseball"
         };
 
+
          
     }
 
-    }
+   
+
+  
+
+}
