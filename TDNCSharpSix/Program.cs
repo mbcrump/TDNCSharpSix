@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Console;
-using System.Net;
+using static System.Console;
 
 namespace TDNCSharpSix
 {
-    class Program
+	class Program
     {
         static void Main(string[] args)
         {
@@ -28,11 +26,11 @@ namespace TDNCSharpSix
             {
                 throw new Exception("Error");
             }
-            catch (Exception ex) if (ex.Message == "ReallyBadError")
+            catch (Exception ex) when (ex.Message == "ReallyBadError")
             {
                 // this one will not execute.
             }
-            catch (Exception ex) if (ex.Message == "Error")
+            catch (Exception ex) when (ex.Message == "Error")
             {
                 // this one will execute
                 WriteLine("This one will execute");
@@ -48,17 +46,15 @@ namespace TDNCSharpSix
 
             //Sample 7 - String 
             string firstName = "Michael";
-            string lastName = "Crump";
-            int orderNumber = 250000;
+			string lastName = "Crump";
 
             WriteLine("Name : " + firstName + " " + lastName);
             WriteLine(string.Format("Name : {0} {1}", firstName, lastName));
 
-            WriteLine("Name : \{firstName} \{lastName}");
-            WriteLine("Name : \{firstName} \{lastName}\nDiscount :\{orderNumber == 250000 ? " You Get 25% Off your order!" : " "}");
-
-            //prevent window closing 
-            ReadLine();
+            WriteLine($"Name : {firstName} {lastName}");
+        	
+			//prevent window closing 
+			ReadLine();
         }
 
         public static void DoSomething(string name)
